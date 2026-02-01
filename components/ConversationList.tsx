@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
-import { formatTime } from "@/lib/utils";
+import { formatRelativeTimestamp } from "@/lib/utils";
 import { getViewerServer } from "@/lib/auth/viewer.server";
 import { getConversationTitlesByConversationId } from "@/lib/conversations.server";
 
@@ -89,7 +89,7 @@ export default async function ConversationList() {
                     {conversation.last_message_preview || "Message vide"}
                   </div>
                   <div className="text-xs text-slate-600">
-                    {formatTime(conversation.last_message_at)}
+                    {formatRelativeTimestamp(conversation.last_message_at)}
                   </div>
                 </>
               ) : (
