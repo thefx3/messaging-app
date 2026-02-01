@@ -6,7 +6,7 @@ import Header from "@/components/Header";
 
 
 export default async function RootLayout({ children, }: Readonly<{ children: React.ReactNode; }>) {
-  const { user, role } = await getViewerServer();
+const { user, role } = await getViewerServer();
   if (!user) redirect("/login");
 
   return (

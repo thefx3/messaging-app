@@ -56,3 +56,5 @@ create table public.messages (
 >> Add index : 
 create index on public.messages (conversation_id, created_at desc);
 create index on public.conversation_members (user_id);
+
+
