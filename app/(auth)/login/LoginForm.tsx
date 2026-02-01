@@ -1,7 +1,7 @@
 //LoginForm.tsx
 "use client";
 
-import { supabaseClient } from "@/lib/supabase/client";
+import { supabase } from "@/lib/supabase/client";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
@@ -18,7 +18,7 @@ export default function LoginForm() {
     setPending(true);
     setError(null);
 
-    const { error } = await supabaseClient.auth.signInWithPassword({
+    const { error } = await supabase.auth.signInWithPassword({
       email,
       password,
     });

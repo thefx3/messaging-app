@@ -8,7 +8,7 @@ type HeaderProps = {
 export default function Header({ email, role }: HeaderProps) {
 
     return (
-        <header className="border w-full flex justify-center items-center justify-between p-4 bg-white/60 backdrop-blur-2xl supports-[backdrop-filter]:bg-white/50">
+        <header className="w-full flex justify-center items-center justify-between p-4 bg-white/60 backdrop-blur-2xl supports-[backdrop-filter]:bg-white/50">
           <div className="mt-3 flex flex-wrap items-center gap-3 text-sm text-slate-700 sm:mt-0">
               <div className="text-sm hidden md:block">
                   <span className="font-medium text-slate-900">{email ?? "—"}</span>

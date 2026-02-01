@@ -2,10 +2,15 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { supabaseClient } from "@/lib/supabase/client"; // ou browser/client selon ton fichier
-import { set } from "zod";
+import { supabase } from "@/lib/supabase/client";
 
-export default function MessageInput({ conversationId, viewerId, }: { conversationId: string; viewerId: string; }) {
+export default function MessageInput({
+  conversationId,
+  viewerId,
+}: {
+  conversationId: string;
+  viewerId: string;
+}) {
   const router = useRouter();
   const [content, setContent] = useState("");
   const [pending, setPending] = useState(false);
@@ -18,7 +23,7 @@ export default function MessageInput({ conversationId, viewerId, }: { conversati
     setPending(true);
     setError(null);
 
-    const { error } = await supabaseClient.from("messages").insert({
+    const { error } = await supabase.from("messages").insert({
       conversation_id: conversationId,
       sender_id: viewerId,
       content: text,
