@@ -3,8 +3,7 @@ import { getDisplayName } from "@/lib/utils";
 import StartConversationButton from "@/components/StartConversationButton";
 import { getViewerServer } from "@/lib/auth/viewer.server";
 import { getExistingConversationIdsByContact } from "@/lib/conversations.server";
-
-const CONTACT_ROLES = ["USER", "ADMIN", "SUPER_ADMIN"] as const;
+import { ROLE_OPTIONS } from "@/lib/users/types";
 
 export default async function ContactsList() {
   const supabase = await createClient();
@@ -17,7 +16,7 @@ export default async function ContactsList() {
   const { data: profiles, error } = await supabase
     .from("user_profiles")
     .select("user_id, first_name, last_name, email, role")
-    .in("role", CONTACT_ROLES)
+    .in("role", ROLE_OPTIONS)
     .order("email");
     // .neq("user_id", user.id);
 
